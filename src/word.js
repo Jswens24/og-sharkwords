@@ -1,7 +1,24 @@
 let word;
 
-function setupWord(initWord, element) {}
+export function setupWord(initWord, element) {
+    word = initWord;
 
-function isLetterInWord(letter) {}
+    initWord.split('').forEach(() => {
+        element.insertAdjacentHTML('beforeend', `<div class="letter-box"></div>`)
+    })
+}
 
-function revealLetterInWord(letter) {}
+export function isLetterInWord(letter) {
+    return word.includes(letter)
+}
+
+export function revealLetterInWord(letter) {
+    const letterBoxes = document.querySelectorAll('.letter-box');
+    word.split('').forEach((wordLetter, index) => {
+        if (wordLetter === letter) {
+            letterBoxes[index].innerHTML = letter;
+        }
+    })
+}
+
+
